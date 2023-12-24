@@ -3,7 +3,7 @@ import React from "react";
 import Carousel from "../components/carousel";
 import Navbar from "../components/Navbar";
 import Sale from "../components/Sale";
-import Category from "../components/Category";
+import CategoryProducts from "../components/CategoryProducts";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <Navbar />
         <Carousel />
         <Sale />
-        <Category />
+        <CategoryProducts />
       </div>
     </>
   );
