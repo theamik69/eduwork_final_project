@@ -4,6 +4,7 @@ import Carousel from "../components/carousel";
 import Navbar from "../components/Navbar";
 import Sale from "../components/Sale";
 import CategoryProducts from "../components/CategoryProducts";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Carousel />
         <Sale />
         <CategoryProducts />
+        <Footer />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import Category from "../components/Category";
 import Price from "../components/Price";
 import Colors from "../components/Colors";
-
+import PropTypes from "prop-types";
 
 const Sidebar = ({ handleChange }) => {
   return (
@@ -16,6 +16,10 @@ const Sidebar = ({ handleChange }) => {
       </section>
     </>
   );
+};
+
+Sidebar.propTypes = {
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

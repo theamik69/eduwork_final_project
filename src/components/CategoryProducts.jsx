@@ -15,7 +15,7 @@ function CategoryProducts() {
         <h1 className="text-4xl font-semibold ml-10 mt-8">Recommended <br /> Product</h1>
         <p className="ml-10 mt-1">Discover our top-rated products, highly recommended by satisfied consumers.</p>
         <div className="flex item-center mt-10 ml-10">
-          <button className="border-2 p-2 rounded-lg bg-red-700 text-white font-semibold border-stone-50">Shop now</button>
+          <a href="/products?star=5" className="border-2 p-2 rounded-lg bg-red-700 text-white font-semibold border-stone-50">Shop now</a>
         </div>
       </div>
       <div className="flex flex-col gap-[20px]">
@@ -29,7 +29,7 @@ function CategoryProducts() {
           <h1 className="text-4xl font-semibold ml-10 mt-8">New Arrival</h1>
           <p className="ml-10 mt-1">New released products with a contemporary style.</p>
           <div className="flex item-center mt-10 ml-10">
-            <button className="border-2 p-2 rounded-lg bg-red-700 text-white font-semibold border-stone-50">Shop now</button>
+            <a href="/products?category=new" className="border-2 p-2 rounded-lg bg-red-700 text-white font-semibold border-stone-50">Shop now</a>
           </div>
         </div>
         <div
@@ -42,7 +42,7 @@ function CategoryProducts() {
           <h1 className="text-4xl font-semibold ml-10 mt-8">Sale</h1>
           <p className="ml-10 mt-1">Various quality shoes with attractive discounts.</p>
           <div className="flex item-center mt-10 ml-10">
-            <button className="border-2 p-2 rounded-lg bg-red-700 text-white font-semibold border-stone-50">Shop now</button>
+            <a href="/products?discount=true" className="border-2 p-2 rounded-lg bg-red-700 text-white font-semibold border-stone-50">Shop now</a>
           </div>
         </div>
       </div>

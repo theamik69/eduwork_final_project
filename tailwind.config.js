@@ -6,9 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'bg-recom': "url('./src/assets/images/recom.jpg')",
-      }
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+      },
     },
   },
   plugins: [],
