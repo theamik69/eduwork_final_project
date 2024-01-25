@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToShipping } from "../redux/slices/shippingSlice";
 import { FaShippingFast } from "react-icons/fa";
@@ -209,6 +209,7 @@ export default function ShippingPage() {
                               id="search-input"
                               className="block w-full px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none"
                               type="text"
+                              required
                               placeholder="Search items"
                               autoComplete="off"
                               onChange={handleInputProvince}
@@ -243,6 +244,7 @@ export default function ShippingPage() {
                               id="search-input"
                               className="block w-full px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none"
                               type="text"
+                              required
                               placeholder="Search items"
                               autoComplete="off"
                               onChange={handleInputCity}
@@ -277,6 +279,7 @@ export default function ShippingPage() {
                               id="search-input"
                               className="block w-full px-4 py-2 text-gray-800 border rounded-md border-gray-300 focus:outline-none"
                               type="text"
+                              required
                               placeholder="Search items"
                               autoComplete="off"
                               onChange={handleInputDistrict}
@@ -337,32 +340,31 @@ export default function ShippingPage() {
               </div>
             </div>
             <div className="w-full md:w-full px-3 mb-6">
-              <Link to={"/order-detail"}>
-                <button
-                  className="hover:bg-black dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white rounded-xl"
-                  type="submit"
-                  onClick={() => {
-                    const addShippingItem = {
-                      id: orderId,
-                      name: nameInput,
-                      phone: phoneInput,
-                      address: addressInput,
-                      courier: dataCourier.data[selectedCourierIndex],
-                      service: dataCourierService,
-                    };
-
-                    // Timpa data di dalam localStorage dengan data baru
+              <button
+                className="hover:bg-black dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white rounded-xl"
+                type="submit"
+                onClick={() => {
+                  const addShippingItem = {
+                    id: orderId,
+                    name: nameInput,
+                    phone: phoneInput,
+                    address: addressInput,
+                    courier: dataCourier.data[selectedCourierIndex],
+                    service: dataCourierService,
+                  };
+                  if (addShippingItem.name && addShippingItem.phone && addShippingItem.address && addShippingItem.courier && addShippingItem.service) {
                     localStorage.setItem("shipping", JSON.stringify(addShippingItem));
 
-                    // Dispatch aksi addToShipping dengan data baru
                     dispatch(addToShipping(addShippingItem));
-                    navigate("/order-detail"); // Langkah 3
+                    navigate("/order-detail");
                     window.location.reload();
-                  }}
-                >
-                  Submit
-                </button>
-              </Link>
+                  } else {
+                    alert("Please fill in all the required information before proceeding.");
+                  }
+                }}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </form>

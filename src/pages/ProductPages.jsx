@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navigation from "../components/Nav";
 import Products from "../components/Products";
 import Recommended from "../components/Recomended";
@@ -13,7 +13,9 @@ function ProductPages() {
   const [discount, setDiscount] = useState(false);
   const [query, setQuery] = useState("");
   const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
@@ -78,12 +80,16 @@ function ProductPages() {
         }
         const data = await response.json();
         setProductData(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching product data:", error);
+        navigate(`/error`);
+        window.location.reload();
       }
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -101,10 +107,16 @@ function ProductPages() {
 
   return (
     <>
-      <Sidebar handleChange={handleChange} />
-      <Navigation query={query} handleInputChange={handleInputChange} />
-      <Recommended handleClick={handleClick} />
-      <Products result={result} />
+      {loading ? (
+        <div className="flex justify-center items-center mt-20 text-3xl">Loading...</div>
+      ) : (
+        <>
+          <Sidebar handleChange={handleChange} />
+          <Navigation query={query} handleInputChange={handleInputChange} />
+          <Recommended handleClick={handleClick} />
+          <Products result={result} />
+        </>
+      )}
     </>
   );
 }

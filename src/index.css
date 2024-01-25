@@ -75,15 +75,16 @@ li {
   
   /* Nav */
 
-  .navProduct {
+  /* .navProduct {
     display: flex;
     border-bottom: 2px solid #f3f3f3;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
+    width: max-content;
     padding: 20px;
     z-index: 999;
     margin-left: 2rem;
-  }
+  } */
 
   .navbar {
     background-color: transparent;

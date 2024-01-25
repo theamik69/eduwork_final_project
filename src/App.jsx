@@ -7,6 +7,7 @@ import ProductOverview from "./pages/ProductOverview";
 import OrderDetail from "./pages/OrderDetail";
 import ShippingPage from "./pages/ShippingPage";
 import OrderSuccess from "./pages/orderSuccess";
+import ErrorPage from "./pages/ErrorPage";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/order-detail" element={<OrderDetail />} />
         <Route path="/shipping" element={<ShippingPage />} />
         <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -28,7 +28,7 @@ const Sale = () => {
     fetchData();
   }, []);
   return (
-    <div className="border-2 mt-12">
+    <div className="flex justify-center border-2 mt-12">
       <h1 className="text-black text-5xl font-semibold mt-3">On Sale</h1>
       <div className="flex justify-center m-10">
         <Swiper

@@ -12,7 +12,6 @@ const Recommended = ({ handleClick }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fungsi untuk mengambil data dari server
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:3000/products");
@@ -25,8 +24,6 @@ const Recommended = ({ handleClick }) => {
         setError(error.message);
       }
     };
-
-    // Panggil fungsi fetchData
     fetchData();
   }, []);
 
