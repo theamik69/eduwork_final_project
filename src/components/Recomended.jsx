@@ -35,7 +35,7 @@ const Recommended = ({ handleClick }) => {
   return (
     <>
       <div>
-        <nav aria-label="Breadcrumb" className="ml-48 mt-6">
+        <nav aria-label="Breadcrumb" className="ml-48 mt-24">
           <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>

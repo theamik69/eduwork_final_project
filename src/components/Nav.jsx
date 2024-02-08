@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ShoppingCard from "./ShoppingCard";
 import { FaSearch } from "react-icons/fa";
@@ -8,9 +8,27 @@ import PropTypes from "prop-types";
 const Nav = ({ handleInputChange, query }) => {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
   const cart = useSelector((state) => state.cart.data);
+
+  const handleScroll = () => {
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className="flex justify-center item-center mt-6 w-full">
-      <nav className="flex w-full justify-end mr-14 mt-5 z-[999]">
+    <div className="navbar fixed top-0 z-[999] bg-white flex justify-center item-center w-full">
+      <nav className="flex w-full justify-end mr-14 mt-10 mb-5 z-[999]">
         <div className="flex justify-center items-center">
           <input className="bg-transparent focus:outline-none w-24 sm:w-64 border-solid border-slate-200 border-2 p-2 rounded-2xl" type="text" onChange={handleInputChange} value={query} placeholder="Enter your search shoes." />
           <FaSearch className="text-slate-600 text-2xl" />
